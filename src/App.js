@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  function ondec() {
+    setCount((prevCount) => prevCount - 1);
+  }
+
+  function oninc() {
+    setCount((prevCount) => prevCount + 1);
+  }
+
+  function reset() {
+    setCount(0);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="head">increment && decrement</div>
+      <div className="incdec">
+        <button onClick={oninc}>+</button>
+        <div className="counter">{count}</div>
+        <button onClick={ondec}>-</button>
+      </div>
+      <button className="reset" onClick={reset}>
+        Reset
+      </button>
     </div>
   );
 }
